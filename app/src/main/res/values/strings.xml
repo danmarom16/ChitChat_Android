@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ChitChat</string>
+    <string name="login_etPassword">Password</string>
+    <string name="login_etUsername">Username</string>
+    <string name="login_etButton">Login</string>
+    <string name="login_etCatchphrase">Like WhatsApp, but better…way better</string>
+    <string name="login_et_toreg">Not registered?</string>
+    <string name="login_et_reftoreg"><b><u>Click Here</u></b></string>
+    <string name="et_Register_displayName">Display Name</string>
+    <string name="et_Register_username">Username</string>
+    <string name="et_Register_passwordConfirm">Confirm Password</string>
+    <string name="et_Register_btn">Register</string>
+    <string name="et_already_registered">Already registered?</string>
+    <string name="et_toLogin"><b><u>Click here</u></b></string>
+</resources>
