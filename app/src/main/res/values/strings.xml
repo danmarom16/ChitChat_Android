@@ -12,4 +12,9 @@
     <string name="et_Register_btn">Register</string>
     <string name="et_already_registered">Already registered?</string>
     <string name="et_toLogin"><b><u>Click here</u></b></string>
+    <string name="contacts"><b>Chats</b></string>
+    <string name="add_new_contact"><b>Add new contact</b></string>
+    <string name="save_contact">Save contact</string>
+    <string name="addNewCon_display_name">Display Name</string>
+    <string name="addNewCon_server_id">Server ID</string>
 </resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chitchat_bg"
+    android:orientation="vertical"
+    tools:context=".AddContactActivity">
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cc_light"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/add_new_contact"
+            android:textColor="@color/cc_dark_1"/>
+
+    </Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/addNewCon_DisplayName"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/addNewCon_display_name"
+            android:textColorHint="#C3C3C3"
+            />
+
+        <EditText
+            android:id="@+id/addNewCon_ServerName"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/addNewCon_server_id"
+            android:textColorHint="#C3C3C3"
+            />
+
+        <Button
+            android:id="@+id/btn_saveNewCon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/chitchat_btn"
+            android:text="@string/save_contact"
+            android:padding="10dp"
+            android:textColor="@color/cc_dark_1" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
