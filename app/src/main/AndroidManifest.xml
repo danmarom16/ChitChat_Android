@@ -19,9 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddContactActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterPageActivity"
             android:exported="false" />
         <activity
