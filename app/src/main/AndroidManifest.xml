@@ -14,7 +14,7 @@
         android:theme="@style/Theme.ChitChat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ChatsActivity"
+            android:name=".ContactsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

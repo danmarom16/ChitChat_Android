@@ -37,9 +37,9 @@ public class Contact {
         this.pic = pic;
     }
 
-    public static List<Contact>  convertFromApiToContact(List<ApiContact> apiContacts){
+    public static List<Contact>  convertFromApiToContact(List<ApiTypeContact> apiTypeContacts){
         List<Contact> contactList = new ArrayList<>();
-        for (ApiContact apicontact: apiContacts) {
+        for (ApiTypeContact apicontact: apiTypeContacts) {
             contactList.add(new Contact(apicontact.getId(), apicontact.getName(),
                     apicontact.getServer(),"Hey boy", "10:00", R.drawable.chitchat_logo));
         }

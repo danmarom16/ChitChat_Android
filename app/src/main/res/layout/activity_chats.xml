@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/chitchat_bg"
-    tools:context=".ChatsActivity">
+    tools:context=".ContactsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

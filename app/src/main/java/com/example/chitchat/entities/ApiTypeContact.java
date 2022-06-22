@@ -4,13 +4,13 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class ApiContact {
+public class ApiTypeContact {
     @PrimaryKey(autoGenerate = true)
     private String id;
     private String name;
     private String server;
 
-    public ApiContact(String id, String name, String server) {
+    public ApiTypeContact(String id, String name, String server) {
         this.id = id;
         this.name = name;
         this.server = server;
