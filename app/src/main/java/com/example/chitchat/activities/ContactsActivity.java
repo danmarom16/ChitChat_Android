@@ -1,4 +1,4 @@
-package com.example.chitchat;
+package com.example.chitchat.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.chitchat.R;
 import com.example.chitchat.adapters.ContactsListAdapter;
 import com.example.chitchat.api.ContactAPI;
+import com.example.chitchat.dao.ContactsDB;
+import com.example.chitchat.dao.ContactsDao;
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.viewmodels.ContactsViewModel;
 
@@ -20,11 +23,16 @@ import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
     private ContactsViewModel viewModel;
+//    private ContactsDB contactsDB;
+//    private ContactsDao contactsDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chats);
+
+//        contactsDB = ContactsDB.getInstance(getApplicationContext());
+//        contactsDao = contactsDB.postDao();
 
         viewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
 

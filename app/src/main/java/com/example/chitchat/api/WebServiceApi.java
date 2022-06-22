@@ -1,6 +1,7 @@
 package com.example.chitchat.api;
 
-import com.example.chitchat.entities.ApiTypeContact;
+import com.example.chitchat.entities.Contact;
+import com.example.chitchat.javaclasses.ApiTypeContact;
 
 import java.util.List;
 import retrofit2.Call;
@@ -12,11 +13,11 @@ import retrofit2.http.Path;
 public interface WebServiceApi {
 
     @GET("contacts/peter1")
-    Call<List<ApiTypeContact>> getContacts();
+    Call<List<Contact>> getContacts();
 
     @GET("contacts/{id}")
-    Call<List<ApiTypeContact>> getContact(@Path("id")int id);
+    Call<List<Contact>> getContact(@Path("id")int id);
 
     @POST("contacts")
-    Call<List<ApiTypeContact>> addContact(@Body ApiTypeContact contact, String loggedUser);
+    Call<List<Contact>> addContact(@Body Contact contact, String loggedUser);
 }

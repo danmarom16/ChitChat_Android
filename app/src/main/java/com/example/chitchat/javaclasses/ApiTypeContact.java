@@ -1,11 +1,9 @@
-package com.example.chitchat.entities;
+package com.example.chitchat.javaclasses;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
 public class ApiTypeContact {
-    @PrimaryKey(autoGenerate = true)
     private String id;
     private String name;
     private String server;

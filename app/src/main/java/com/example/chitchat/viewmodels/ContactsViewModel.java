@@ -14,7 +14,7 @@ public class ContactsViewModel extends ViewModel {
 
     private ContactRepository contactRepo;
     private LiveData<List<Contact>> contacts;
-//
+
     public ContactsViewModel(){
         contactRepo = new ContactRepository();
         contacts = contactRepo.getAll();

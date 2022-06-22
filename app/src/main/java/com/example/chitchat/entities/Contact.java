@@ -1,22 +1,26 @@
-package com.example.chitchat.entities;
+﻿package com.example.chitchat.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.chitchat.R;
+import com.example.chitchat.javaclasses.ApiTypeContact;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Contact {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey @NonNull
     private String id;
     private String name;
     private String server;
     private String lastMessage;
     private String lastMessageDate;
-    private int pic;
+    private int pic = 0;
+
+
     public Contact(String id, String name, String server,
                    String lastMessage, String lastMessageDate) {
         this.id = id;
@@ -24,26 +28,6 @@ public class Contact {
         this.server = server;
         this.lastMessage = lastMessage;
         this.lastMessageDate = lastMessageDate;
-        this.pic = 0;
-    }
-
-    public Contact(String id, String name, String server,
-                   String lastMessage, String lastMessageDate, int pic) {
-        this.id = id;
-        this.name = name;
-        this.server = server;
-        this.lastMessage = lastMessage;
-        this.lastMessageDate = lastMessageDate;
-        this.pic = pic;
-    }
-
-    public static List<Contact>  convertFromApiToContact(List<ApiTypeContact> apiTypeContacts){
-        List<Contact> contactList = new ArrayList<>();
-        for (ApiTypeContact apicontact: apiTypeContacts) {
-            contactList.add(new Contact(apicontact.getId(), apicontact.getName(),
-                    apicontact.getServer(),"Hey boy", "10:00", R.drawable.chitchat_logo));
-        }
-        return contactList;
     }
 
     public String getId() {

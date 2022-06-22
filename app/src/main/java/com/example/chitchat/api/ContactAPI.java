@@ -2,14 +2,12 @@ package com.example.chitchat.api;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.chitchat.MyApplication;
+import com.example.chitchat.activities.MyApplication;
 import com.example.chitchat.R;
-import com.example.chitchat.entities.ApiTypeContact;
+import com.example.chitchat.javaclasses.ApiTypeContact;
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.repositories.ContactRepository;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import retrofit2.Call;
@@ -32,15 +30,19 @@ public class ContactAPI {
     }
 
     public void get(MutableLiveData<List<Contact>> contacts){
-        Call<List<ApiTypeContact>> call = webServiceApi.getContacts();
-        call.enqueue(new Callback<List<ApiTypeContact>>() {
+        Call<List<Contact>> call = webServiceApi.getContacts();
+        call.enqueue(new Callback<List<Contact>>() {
             @Override
-            public void onResponse(Call<List<ApiTypeContact>> call, Response<List<ApiTypeContact>> response) {
-                contacts.postValue(Contact.convertFromApiToContact(response.body()));
+            public void onResponse(Call<List<Contact>> call, Response<List<Contact>> response) {
+                List<Contact> temp = response.body();
+                for (Contact c: temp) {
+                    c.setPic(R.drawable.chitchat_logo);
+                }
+                contacts.postValue(temp);
             }
 
             @Override
-            public void onFailure(Call<List<ApiTypeContact>> call, Throwable t) {
+            public void onFailure(Call<List<Contact>> call, Throwable t) {
 
             }
         });
