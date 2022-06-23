@@ -67,6 +67,10 @@ public class ContactAPI {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.raw().code() == 200){
                     repo.reload();
+                    repo.insert(apiTypeContact);
+                }
+                else{
+                    Log.d("Contact Api","Cannot add user\n");
                 }
             }
             @Override

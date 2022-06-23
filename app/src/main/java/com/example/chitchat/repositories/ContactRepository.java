@@ -58,8 +58,12 @@ public class ContactRepository {
     }
 
     public void reload(){
-        //TODO: reload contacts from server to local db.
         api.get(this.contactListData);
+    }
+
+    public void insert(ApiTypeContact apiTypeContact){
+        contactsDao.insert(new Contact(apiTypeContact.getId(), apiTypeContact.getName(),
+                apiTypeContact.getServer(),"bla bla", "10:00"));
     }
 }
 
