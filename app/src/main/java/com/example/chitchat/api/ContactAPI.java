@@ -4,8 +4,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.chitchat.activities.MyApplication;
 import com.example.chitchat.R;
+import com.example.chitchat.activities.MyApplication;
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.ApiTypeInvitation;
 import com.example.chitchat.javaclasses.ApiTypeLogin;
@@ -42,6 +42,10 @@ public class ContactAPI {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         webServiceApi = retrofit.create(WebServiceApi.class);
+    }
+
+    public WebServiceApi getWebServiceApi(){
+        return webServiceApi;
     }
 
     public void get(MutableLiveData<List<Contact>> contacts){
@@ -110,5 +114,9 @@ public class ContactAPI {
             e.printStackTrace();
         }
         return loggedUser != null;
+    }
+
+    public void setLoggedUser(UserData userData){
+        loggedUser = new UserData(userData);
     }
 }

@@ -9,7 +9,6 @@ import com.example.chitchat.dao.ContactsDao;
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.UserData;
-import com.example.chitchat.javaclasses.ApiTypeInvitation;
 
 import java.util.List;
 
