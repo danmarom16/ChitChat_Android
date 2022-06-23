@@ -8,6 +8,7 @@ import com.example.chitchat.activities.MyApplication;
 import com.example.chitchat.R;
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.ApiTypeInvitation;
+import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.UserData;
 import com.example.chitchat.repositories.ContactRepository;
 
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ContactAPI {
 
-    private UserData loggedUser = new UserData("joe1","Joe", "localhost:5241");
+    private UserData loggedUser = null;
     private Retrofit retrofit;
     private WebServiceApi webServiceApi;
     public static ContactAPI contactAPI;
@@ -84,5 +85,30 @@ public class ContactAPI {
             public void onFailure(Call<Void> call, Throwable t) {
             }
         });
+    }
+
+    public boolean login(ApiTypeLogin loginData){
+        Call<UserData> call = webServiceApi.login(loginData);
+        call.enqueue(new Callback<UserData>() {
+            @Override
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
+                if(response.raw().code() == 200){
+                    loggedUser = new UserData(response.body());
+                }
+                else {
+                    Log.d("Contact API","Login failed\n");
+                }
+            }
+            @Override
+            public void onFailure(Call<UserData> call, Throwable t) {
+            }
+        });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return loggedUser != null;
     }
 }

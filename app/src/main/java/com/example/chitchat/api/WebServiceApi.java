@@ -2,6 +2,8 @@ package com.example.chitchat.api;
 
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.ApiTypeInvitation;
+import com.example.chitchat.javaclasses.ApiTypeLogin;
+import com.example.chitchat.javaclasses.UserData;
 
 import java.util.List;
 import retrofit2.Call;
@@ -20,4 +22,7 @@ public interface WebServiceApi {
 
     @POST("invitations/")
     Call<Void> invite(@Body ApiTypeInvitation invitation);
+
+    @POST("login/")
+    Call<UserData> login(@Body ApiTypeLogin loginData);
 }

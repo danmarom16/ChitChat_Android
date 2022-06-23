@@ -13,6 +13,12 @@ public class UserData {
         this.server = server;
     }
 
+    public UserData(UserData userData) {
+        this.id = userData.getId();
+        this.name = userData.getName();
+        this.server = userData.getServer();
+    }
+
     public String getId() {
         return id;
     }
