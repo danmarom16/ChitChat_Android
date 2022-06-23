@@ -5,47 +5,61 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.chitchat.R;
 import com.example.chitchat.api.ContactAPI;
+import com.example.chitchat.dao.AppLocalDB;
+import com.example.chitchat.dao.ContactsDao;
 import com.example.chitchat.entities.Contact;
+import com.example.chitchat.javaclasses.ApiTypeContact;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ContactRepository {
+    public static ContactRepository repository;
+
+    private AppLocalDB localDB;
+    private ContactsDao contactsDao;
     private ContactListData contactListData;
     private ContactAPI api;
 
-    public ContactRepository() {
-        contactListData = new ContactListData();
-        api = new ContactAPI();
+    public static ContactRepository getInstance() {
+        if (repository == null) {
+            repository = new ContactRepository();
+        }
+        return repository;
     }
 
-        class ContactListData extends MutableLiveData<List<Contact>>
-        {
-            public ContactListData() {
-                super();
-                List<Contact> contacts = new ArrayList<>();
-                contacts.add(new Contact("0","dan","localhost:3000","Hey boy", "10:00"));
-                contacts.add(new Contact("0","asi","localhost:3000","byhe", "20:00"));
-                contacts.add(new Contact("0","beni","localhost:3000","bhad", "12:00"));
-                contacts.add(new Contact("0","connor","localhost:3000","sia", "10:40"));
-                contacts.add(new Contact("0","goku","localhost:3000","shalom", "12:10"));
-                contacts.add(new Contact("0","naruto","localhost:3000","ahlan", "11:01"));
-                contacts.add(new Contact("0","lupi","localhost:3000","lama", "12:54"));
-                contacts.add(new Contact("0","travosh","localhost:3000","kaha", "21:00"));
-                contacts.add(new Contact("0","wiz","localhost:3000","ze", "22:00"));
-                contacts.add(new Contact("0","kofi","localhost:3000","ken", "12:00"));
-                setValue(contacts);
-            }
+    private ContactRepository() {
+        localDB = AppLocalDB.getInstance();
+        contactsDao = localDB.contactsDao();
+        contactListData = new ContactListData();
+        api = ContactAPI.getInstance();
+    }
 
-            @Override
-            protected void onActive() {
-                super.onActive();
-                ContactAPI contactAPI = new ContactAPI();
-                contactAPI.get(this);
-            }
+    class ContactListData extends MutableLiveData<List<Contact>> {
+        public ContactListData() {
+            super();
+            setValue(contactsDao.index());
         }
 
-        public LiveData<List<Contact>> getAll(){return contactListData;};
+        @Override
+        protected void onActive() {
+            super.onActive();
+            api.get(this);
+        }
     }
+
+    public LiveData<List<Contact>> getAll() {
+        return contactListData;
+    }
+
+    public void add(ApiTypeContact apiTypeContact){
+        api.add(apiTypeContact, this);
+    }
+
+    public void reload(){
+        //TODO: reload contacts from server to local db.
+        api.get(this.contactListData);
+    }
+}
 

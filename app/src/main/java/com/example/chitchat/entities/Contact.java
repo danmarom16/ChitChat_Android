@@ -1,14 +1,8 @@
-﻿package com.example.chitchat.entities;
+package com.example.chitchat.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import com.example.chitchat.R;
-import com.example.chitchat.javaclasses.ApiTypeContact;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Contact {

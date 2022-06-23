@@ -1,12 +1,11 @@
 package com.example.chitchat.javaclasses;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 public class ApiTypeContact {
+
     private String id;
     private String name;
     private String server;
+
 
     public ApiTypeContact(String id, String name, String server) {
         this.id = id;

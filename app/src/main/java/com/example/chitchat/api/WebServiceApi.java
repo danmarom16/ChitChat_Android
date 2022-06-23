@@ -18,6 +18,6 @@ public interface WebServiceApi {
     @GET("contacts/{id}")
     Call<List<Contact>> getContact(@Path("id")int id);
 
-    @POST("contacts")
-    Call<List<Contact>> addContact(@Body Contact contact, String loggedUser);
+    @POST("contacts/peter1")
+    Call<Void> addContact(@Body ApiTypeContact contact);
 }
