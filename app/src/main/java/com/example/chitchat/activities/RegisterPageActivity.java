@@ -2,9 +2,9 @@ package com.example.chitchat.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +34,8 @@ public class RegisterPageActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        TextView errorMsg = findViewById(R.id.register_errorMsg);
+
         // register logic:
         Button btnRegister = findViewById(R.id.register_btnRegister);
         btnRegister.setOnClickListener(v -> {
@@ -44,28 +46,29 @@ public class RegisterPageActivity extends AppCompatActivity {
             // String Image = findViewById(R.id.register_image);;
 
             if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
-                Log.d("password comparison", "Not match");
+                errorMsg.setText(R.string.register_pass_not_match);
             } else {
+                Intent i = new Intent(this, ContactsActivity.class);
                 ApiTypeRegister registerData = new ApiTypeRegister(
                         username.getText().toString(),
                         displayName.getText().toString(),
                         password.getText().toString()
                 );
-                Intent i = new Intent(this, ContactsActivity.class);
                 Call<UserData> call = api.getWebServiceApi().register(registerData);
                 call.enqueue(new Callback<UserData>() {
                     @Override
                     public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {
                         if (response.raw().code() == 200) {
                             api.setLoggedUser(response.body());
+                            errorMsg.setText("");
                             startActivity(i);
                         } else {
-                            Log.d("Register Http Request", "Didn't work");
+                            errorMsg.setText(R.string.register_error_msg);
                         }
                     }
-
                     @Override
                     public void onFailure(@NonNull Call<UserData> call, @NonNull Throwable t) {
+                        errorMsg.setText(R.string.apiFail);
                     }
                 });
             }
