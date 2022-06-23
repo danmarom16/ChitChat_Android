@@ -19,7 +19,6 @@
     <string name="addNewCon_server_id">Server ID</string>
     <string name="BaseUrl">http://10.0.2.2:5241/api/</string>
     <string name="add_new_contact__id">Contact ID</string>
-    <string name="add_new_contact__contact_display_name">Contact Display Name</string>
-    <string name="add_new_contact__contact_server_name">Contact Server Name</string>
+    <string name="add_new_contact__contact_server_name">Contact Server</string>
     <string name="add_new_contact__contact_btn_save">Save</string>
 </resources>

@@ -3,12 +3,11 @@ package com.example.chitchat.viewmodels;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.chitchat.R;
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.javaclasses.ApiTypeContact;
+import com.example.chitchat.javaclasses.ApiTypeInvitation;
+import com.example.chitchat.javaclasses.UserData;
 import com.example.chitchat.repositories.ContactRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsViewModel extends ViewModel {
@@ -26,8 +25,9 @@ public class ContactsViewModel extends ViewModel {
     }
 
 
-    public void add(ApiTypeContact apiTypeContact) {
-        contactRepo.add(apiTypeContact);
+    public void add(UserData newContact) {
+        contactRepo.add(newContact);
+        //if failed -> alert
     }
 
 ////    public void delete(){contactRepo.delete(contact);};

@@ -55,16 +55,6 @@
             />
 
         <EditText
-            android:id="@+id/add_new_contact__contact_display_name"
-            android:gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:hint="@string/add_new_contact__contact_display_name"
-            android:textColorHint="#C3C3C3"
-            />
-
-        <EditText
             android:id="@+id/add_new_contact__contact_server_name"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"

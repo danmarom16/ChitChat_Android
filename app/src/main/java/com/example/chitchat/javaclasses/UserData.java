@@ -1,13 +1,13 @@
 package com.example.chitchat.javaclasses;
 
-public class ApiTypeContact {
+public class UserData {
 
     private String id;
     private String name;
     private String server;
 
 
-    public ApiTypeContact(String id, String name, String server) {
+    public UserData(String id, String name, String server) {
         this.id = id;
         this.name = name;
         this.server = server;

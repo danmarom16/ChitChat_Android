@@ -7,7 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.chitchat.activities.MyApplication;
 import com.example.chitchat.R;
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.javaclasses.ApiTypeContact;
+import com.example.chitchat.javaclasses.ApiTypeInvitation;
+import com.example.chitchat.javaclasses.UserData;
 import com.example.chitchat.repositories.ContactRepository;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ContactAPI {
 
+    private UserData loggedUser = new UserData("joe1","Joe", "localhost:5241");
     private Retrofit retrofit;
     private WebServiceApi webServiceApi;
     public static ContactAPI contactAPI;
@@ -42,7 +44,7 @@ public class ContactAPI {
     }
 
     public void get(MutableLiveData<List<Contact>> contacts){
-        Call<List<Contact>> call = webServiceApi.getContacts();
+        Call<List<Contact>> call = webServiceApi.getContacts(loggedUser.getId());
         call.enqueue(new Callback<List<Contact>>() {
             @Override
             public void onResponse(Call<List<Contact>> call, Response<List<Contact>> response) {
@@ -60,14 +62,19 @@ public class ContactAPI {
         });
     }
 
-    public void add(ApiTypeContact apiTypeContact, ContactRepository repo){
-        Call<Void> call = webServiceApi.addContact(apiTypeContact);
+    public void add(UserData newContact, ContactRepository repo){
+        ApiTypeInvitation invitation = new ApiTypeInvitation(
+                loggedUser.getId(),
+                newContact.getId(),
+                newContact.getServer()
+        );
+        Call<Void> call = webServiceApi.invite(invitation);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.raw().code() == 200){
                     repo.reload();
-                    repo.insert(apiTypeContact);
+                    //repo.insert(newContact);
                 }
                 else{
                     Log.d("Contact Api","Cannot add user\n");

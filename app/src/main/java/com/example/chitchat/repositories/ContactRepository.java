@@ -3,15 +3,13 @@ package com.example.chitchat.repositories;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.chitchat.R;
 import com.example.chitchat.api.ContactAPI;
 import com.example.chitchat.dao.AppLocalDB;
 import com.example.chitchat.dao.ContactsDao;
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.javaclasses.ApiTypeContact;
+import com.example.chitchat.javaclasses.UserData;
+import com.example.chitchat.javaclasses.ApiTypeInvitation;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ContactRepository {
@@ -53,17 +51,18 @@ public class ContactRepository {
         return contactListData;
     }
 
-    public void add(ApiTypeContact apiTypeContact){
-        api.add(apiTypeContact, this);
+    public void add(UserData newContact){
+        api.add(newContact, this);
+        // alert if failed
     }
 
     public void reload(){
         api.get(this.contactListData);
     }
 
-    public void insert(ApiTypeContact apiTypeContact){
-        contactsDao.insert(new Contact(apiTypeContact.getId(), apiTypeContact.getName(),
-                apiTypeContact.getServer(),"bla bla", "10:00"));
+    public void insert(UserData userData){
+        contactsDao.insert(new Contact(userData.getId(), userData.getName(),
+                userData.getServer(),"bla bla", "10:00"));
     }
 }
 
