@@ -45,6 +45,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            android:id="@+id/register_username"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
             android:textColorHint="#C3C3C3"
             />
         <EditText
+            android:id="@+id/register_displayName"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,8 +64,8 @@
             />
 
         <EditText
+            android:id="@+id/register_password"
             android:gravity="center_horizontal"
-            android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -74,8 +76,8 @@
 
 
         <EditText
+            android:id="@+id/register_confirmPassword"
             android:gravity="center_horizontal"
-            android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -85,7 +87,7 @@
             android:textColorHint="#FFC3C3C3"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/register_btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -117,6 +119,15 @@
                 android:gravity="center"/>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/register_errorMsg"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            />
 
     </LinearLayout>
 

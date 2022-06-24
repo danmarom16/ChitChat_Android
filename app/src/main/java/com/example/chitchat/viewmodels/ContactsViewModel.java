@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.javaclasses.ApiTypeInvitation;
 import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.UserData;
 import com.example.chitchat.repositories.ContactRepository;
@@ -32,7 +31,6 @@ public class ContactsViewModel extends ViewModel {
     }
 
     public boolean login(ApiTypeLogin loginData){
-
         return contactRepo.login(loginData);
     }
 
