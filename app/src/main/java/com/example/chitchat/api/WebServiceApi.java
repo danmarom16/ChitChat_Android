@@ -1,10 +1,10 @@
 package com.example.chitchat.api;
 
-import android.os.Message;
 
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.ApiTypeInvitation;
 import com.example.chitchat.javaclasses.ApiTypeLogin;
+import com.example.chitchat.javaclasses.ApiTypeMessage;
 import com.example.chitchat.javaclasses.ApiTypeRegister;
 import com.example.chitchat.javaclasses.UserData;
 
@@ -34,7 +34,7 @@ public interface WebServiceApi {
     Call<UserData> register(@Body ApiTypeRegister registerData);
 
     @GET("contacts/{contactId}/Messages/{userId}")
-    Call<List<Message>> getMessages(
+    Call<List<ApiTypeMessage>> getMessages(
             @Path(value = "contactId", encoded = true) String contactId,
             @Path(value = "userId", encoded = true) String userId);
 }
