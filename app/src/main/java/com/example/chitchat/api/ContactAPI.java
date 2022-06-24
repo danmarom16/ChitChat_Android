@@ -93,4 +93,8 @@ public class ContactAPI {
     public void setLoggedUser(UserData userData){
         loggedUser = new UserData(userData);
     }
+
+    public UserData getLoggedUser(){
+        return this.loggedUser;
+    }
 }
