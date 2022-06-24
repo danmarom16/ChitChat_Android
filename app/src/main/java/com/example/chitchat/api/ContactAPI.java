@@ -8,7 +8,6 @@ import com.example.chitchat.R;
 import com.example.chitchat.activities.MyApplication;
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.ApiTypeInvitation;
-import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.UserData;
 import com.example.chitchat.repositories.ContactRepository;
 
@@ -91,32 +90,11 @@ public class ContactAPI {
         });
     }
 
-    public boolean login(ApiTypeLogin loginData){
-        Call<UserData> call = webServiceApi.login(loginData);
-        call.enqueue(new Callback<UserData>() {
-            @Override
-            public void onResponse(Call<UserData> call, Response<UserData> response) {
-                if(response.raw().code() == 200){
-                    loggedUser = new UserData(response.body());
-                }
-                else {
-                    Log.d("Contact API","Login failed\n");
-                }
-            }
-            @Override
-            public void onFailure(Call<UserData> call, Throwable t) {
-            }
-        });
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return loggedUser != null;
-    }
-
     public void setLoggedUser(UserData userData){
         loggedUser = new UserData(userData);
+    }
+
+    public UserData getLoggedUser(){
+        return this.loggedUser;
     }
 }

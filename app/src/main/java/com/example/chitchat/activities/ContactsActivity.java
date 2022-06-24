@@ -1,17 +1,18 @@
 package com.example.chitchat.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import com.example.chitchat.R;
 import com.example.chitchat.adapters.ContactsListAdapter;
-import com.example.chitchat.dao.AppLocalDB;
-import com.example.chitchat.dao.ContactsDao;
+import com.example.chitchat.javaclasses.RecyclerItemClickListener;
 import com.example.chitchat.viewmodels.ContactsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -41,6 +42,26 @@ public class ContactsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+        Intent intent = new Intent(this, ChatActivity.class);
+        lstContacts.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, lstContacts ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        View contact = lstContacts.getLayoutManager().findViewByPosition(position);
+
+                        TextView id = contact.findViewById(R.id.contactId);
+                        TextView displayName = contact.findViewById(R.id.contactName);
+                        //ImageView profilePicutre = contact.findViewById(R.id.contactImage);
+
+                        intent.putExtra("id", id.getText().toString());
+                        intent.putExtra("displayName", displayName.getText().toString());
+                        //i.putExtra("profilePicutre", profilePicutre.getText().toString());
+
+                        startActivity(intent);
+                    }
+                })
+        );
     }
 
 }

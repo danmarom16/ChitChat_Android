@@ -16,6 +16,7 @@ import java.util.List;
 public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapter.ContactViewHolder> {
 
     class ContactViewHolder extends RecyclerView.ViewHolder{
+        private final TextView contactId;
         private final TextView contactName;
         private final TextView contactLastMessage;
         private final TextView contactLastMessageDate;
@@ -23,6 +24,7 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
 
         private ContactViewHolder(View viewItem){
             super(viewItem);
+            contactId = viewItem.findViewById(R.id.contactId);
             contactName = viewItem.findViewById(R.id.contactName);
             contactLastMessage = viewItem.findViewById(R.id.contactLastMessage);
             contactLastMessageDate = viewItem.findViewById(R.id.contactLastMessageDate);
@@ -46,6 +48,7 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         if(contacts != null){
             final Contact current = contacts.get(position);
+            holder.contactId.setText(current.getId());
             holder.contactName.setText(current.getName());
             holder.contactLastMessage.setText(current.getLastMessage());
             holder.contactLastMessageDate.setText(current.getLastMessageDate());

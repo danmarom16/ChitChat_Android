@@ -7,7 +7,6 @@ import com.example.chitchat.api.ContactAPI;
 import com.example.chitchat.dao.AppLocalDB;
 import com.example.chitchat.dao.ContactsDao;
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.UserData;
 
 import java.util.List;
@@ -63,9 +62,6 @@ public class ContactRepository {
     public void insert(UserData userData){
         contactsDao.insert(new Contact(userData.getId(), userData.getName(),
                 userData.getServer(),"bla bla", "10:00"));
-    }
-    public boolean login(ApiTypeLogin loginData){
-        return api.login(loginData);
     }
 }
 

@@ -14,11 +14,14 @@
         android:theme="@style/Theme.ChitChat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddNewContactActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ContactsActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.RegisterPageActivity"
             android:exported="false" />
@@ -27,6 +30,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
