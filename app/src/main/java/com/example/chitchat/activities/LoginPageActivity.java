@@ -34,7 +34,6 @@ public class LoginPageActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-
         EditText username = findViewById(R.id.login_username);
         EditText password = findViewById(R.id.login_password);
         TextView errorMsg = findViewById(R.id.login_errorMsg);

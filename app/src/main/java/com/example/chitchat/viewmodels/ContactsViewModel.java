@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.chitchat.entities.Contact;
-import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.UserData;
 import com.example.chitchat.repositories.ContactRepository;
 
@@ -28,10 +27,6 @@ public class ContactsViewModel extends ViewModel {
     public void add(UserData newContact) {
         contactRepo.add(newContact);
         //if failed -> alert
-    }
-
-    public boolean login(ApiTypeLogin loginData){
-        return contactRepo.login(loginData);
     }
 
 ////    public void delete(){contactRepo.delete(contact);};
