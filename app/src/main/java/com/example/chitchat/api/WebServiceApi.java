@@ -42,5 +42,10 @@ public interface WebServiceApi {
     @POST("transfer/")
     Call<Void> sendMessage(@Body ApiTypeTransfer apiTypeTransfer);
 
+    @POST("token/{userId}")
+    Call<Void> addToken(
+            @Body String token,
+            @Path(value = "userId", encoded = true) String userId);
+
 
 }
