@@ -64,10 +64,10 @@ public class ApiTypeMessage {
         }
     }
 
-    public static ApiTypeMessage createSenderMessage(String content) {
+    public static ApiTypeMessage createMessage(boolean sent, String content) {
         DateFormat timeFormat = new SimpleDateFormat("HH:mm");
         timeFormat.setTimeZone(TimeZone.getTimeZone("Asia/Jerusalem"));
         String currentTime = timeFormat.format(new Date());
-        return new ApiTypeMessage("0", content, currentTime, true);
+        return new ApiTypeMessage("0", content, currentTime, sent);
     }
 }

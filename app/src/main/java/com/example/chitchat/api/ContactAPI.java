@@ -1,5 +1,7 @@
 package com.example.chitchat.api;
 
+import static java.lang.String.valueOf;
+
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -22,6 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ContactAPI {
 
+    private String token;
     private UserData loggedUser = null;
     private Retrofit retrofit;
     private WebServiceApi webServiceApi;
@@ -100,4 +103,24 @@ public class ContactAPI {
         }
         return new UserData("admin", "Admin", "localhost:5241");
     }
-}
+
+    public void addToken(String token){
+        this.token = token;
+            Call<Void> tokenCall = webServiceApi.addToken(token, loggedUser.getId());
+        tokenCall.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> tokenCall, Response<Void> response) {
+                   if(response.raw().code() == 200){
+                       Log.d("ContactAPI", "added token to server successfully\n");
+                }
+                   else{
+                       Log.d("ContactAPI", "failed to add token to server \n");
+                   }
+                }
+                @Override
+                public void onFailure(Call<Void> tokenCall, Throwable t) {
+                    Log.d("ContactAPI", valueOf(R.string.apiFail));
+                }
+            });
+        }
+    }

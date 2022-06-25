@@ -12,19 +12,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chitchat.R;
 import com.example.chitchat.adapters.ContactsListAdapter;
+import com.example.chitchat.api.ContactAPI;
 import com.example.chitchat.javaclasses.RecyclerItemClickListener;
 import com.example.chitchat.viewmodels.ContactsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 
 public class ContactsActivity extends AppCompatActivity {
 
+    ContactAPI api;
     private ContactsViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(
+                ContactsActivity.this, instanceIdResult -> {
+                    String newToken = instanceIdResult.getToken();
+                    api.addToken(newToken);
+                }
+        );
+
+        api = ContactAPI.getInstance();
 
         viewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
 

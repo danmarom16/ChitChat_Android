@@ -19,6 +19,9 @@ import com.example.chitchat.adapters.ChatMessagesAdapter;
 import com.example.chitchat.api.ContactAPI;
 import com.example.chitchat.javaclasses.ApiTypeMessage;
 import com.example.chitchat.javaclasses.ApiTypeTransfer;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ public class ChatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         api = ContactAPI.getInstance();
@@ -55,10 +59,10 @@ public class ChatActivity extends AppCompatActivity {
 
         contactDisplayName.setText(getIntent().getExtras().getString("displayName"));
         // contactProfilePic.setImageBitmap( ??????? );  function(getIntent().getExtras().getString("profilePicutre"));
+        String from = getIntent().getExtras().getString("from");
+        String contactId = getIntent().getExtras().getString("id");
 
         String loggedUserId = api.getLoggedUser().getId();
-        String contactId =  getIntent().getExtras().getString("id");
-
         Call<List<ApiTypeMessage>> getMessagesCall = api.getWebServiceApi().getMessages(contactId, loggedUserId);
         getMessagesCall.enqueue(new Callback<List<ApiTypeMessage>>() {
             @Override
@@ -90,7 +94,7 @@ public class ChatActivity extends AppCompatActivity {
                 public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                     Log.d("Chat", String.valueOf(response.raw().code()));
                     if (response.raw().code() == 201) {
-                        ApiTypeMessage m = ApiTypeMessage.createSenderMessage(currentMessage.getText().toString());
+                        ApiTypeMessage m = ApiTypeMessage.createMessage(true, currentMessage.getText().toString());
                         currentMessage.setText(null);
                         // hide keyboard
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -113,5 +117,14 @@ public class ChatActivity extends AppCompatActivity {
             Intent i = new Intent(this, ContactsActivity.class);
             startActivity(i);
         });
+
+        if(from != null){
+            if(from.equals(contactId)){
+                String content = getIntent().getExtras().getString("content");
+                ApiTypeMessage m = ApiTypeMessage.createMessage(false, content);
+                messages.add(m);
+                adapter.setMessages(messages);
+            }
+        }
     }
 }
