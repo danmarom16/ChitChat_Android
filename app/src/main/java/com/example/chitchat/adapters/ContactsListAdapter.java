@@ -47,11 +47,13 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListAdapte
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
         if(contacts != null){
-            final Contact current = contacts.get(position);
+            Contact current = contacts.get(position);
+            current.fTime();
+            current.fMessage();
             holder.contactId.setText(current.getId());
             holder.contactName.setText(current.getName());
-            holder.contactLastMessage.setText(current.getLastMessage());
-            holder.contactLastMessageDate.setText(current.getLastMessageDate());
+            holder.contactLastMessage.setText(current.getLast());
+            holder.contactLastMessageDate.setText(current.getLastdate());
             holder.contactImage.setImageResource(current.getPic());
         }
     }

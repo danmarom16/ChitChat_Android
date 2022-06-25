@@ -1,7 +1,9 @@
 package com.example.chitchat.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,6 +41,10 @@ public class RegisterPageActivity extends AppCompatActivity {
         // register logic:
         Button btnRegister = findViewById(R.id.register_btnRegister);
         btnRegister.setOnClickListener(v -> {
+
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(btnRegister.getWindowToken(), 0);
+
             EditText username = findViewById(R.id.register_username);
             EditText displayName = findViewById(R.id.register_displayName);
             EditText password = findViewById(R.id.register_password);

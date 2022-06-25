@@ -28,10 +28,11 @@ public class ContactsActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
 
-        RecyclerView lstContacts = findViewById(R.id.lstContacts);
         final ContactsListAdapter adapter = new ContactsListAdapter(this);
+        RecyclerView lstContacts = findViewById(R.id.lstContacts);
         lstContacts.setAdapter(adapter);
         lstContacts.setLayoutManager(new LinearLayoutManager(this));
+
         viewModel.get().observe(this, contacts -> {
             adapter.setContacts(contacts);
         });

@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.chitchat.entities.Contact;
 
-@Database(entities = {Contact.class}, version = 3)
+@Database(entities = {Contact.class}, version = 5)
 public abstract class AppLocalDB extends RoomDatabase {
 
     public abstract ContactsDao contactsDao();

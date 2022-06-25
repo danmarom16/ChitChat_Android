@@ -9,6 +9,7 @@ import com.example.chitchat.dao.ContactsDao;
 import com.example.chitchat.entities.Contact;
 import com.example.chitchat.javaclasses.UserData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactRepository {
@@ -36,7 +37,8 @@ public class ContactRepository {
     class ContactListData extends MutableLiveData<List<Contact>> {
         public ContactListData() {
             super();
-            setValue(contactsDao.index());
+            List<Contact> contacts = new ArrayList<>();
+            setValue(contacts); // setValue(contactsDao.index());
         }
 
         @Override

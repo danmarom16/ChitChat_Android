@@ -6,6 +6,7 @@ import com.example.chitchat.javaclasses.ApiTypeInvitation;
 import com.example.chitchat.javaclasses.ApiTypeLogin;
 import com.example.chitchat.javaclasses.ApiTypeMessage;
 import com.example.chitchat.javaclasses.ApiTypeRegister;
+import com.example.chitchat.javaclasses.ApiTypeTransfer;
 import com.example.chitchat.javaclasses.UserData;
 
 import java.util.List;
@@ -37,4 +38,9 @@ public interface WebServiceApi {
     Call<List<ApiTypeMessage>> getMessages(
             @Path(value = "contactId", encoded = true) String contactId,
             @Path(value = "userId", encoded = true) String userId);
+
+    @POST("transfer/")
+    Call<Void> sendMessage(@Body ApiTypeTransfer apiTypeTransfer);
+
+
 }

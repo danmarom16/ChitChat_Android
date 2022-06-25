@@ -95,6 +95,9 @@ public class ContactAPI {
     }
 
     public UserData getLoggedUser(){
-        return this.loggedUser;
+        if (this.loggedUser != null){
+            return this.loggedUser;
+        }
+        return new UserData("admin", "Admin", "localhost:5241");
     }
 }

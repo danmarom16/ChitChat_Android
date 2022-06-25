@@ -1,7 +1,9 @@
 package com.example.chitchat.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,6 +42,10 @@ public class LoginPageActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.login_btnLogin);
 
         btnLogin.setOnClickListener(l -> {
+
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(btnLogin.getWindowToken(), 0);
+
             Intent i = new Intent(this, ContactsActivity.class);
             ApiTypeLogin loginData = new ApiTypeLogin(
                     username.getText().toString(),

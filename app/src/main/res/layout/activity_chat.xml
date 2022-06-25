@@ -21,14 +21,13 @@
             android:gravity="center_vertical">
 
             <ImageButton
-                android:id="@+id/backbuttonofspecificchat"
+                android:id="@+id/activity_chat__btnBack"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
                 android:src="@drawable/back_arrow"
-                app:tint="@color/white">
-            </ImageButton>
+                app:tint="@color/white"></ImageButton>
 
 
             <androidx.cardview.widget.CardView
@@ -36,7 +35,7 @@
                 android:layout_height="35dp"
                 android:id="@+id/cardviewofspeficuser"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/backbuttonofspecificchat"
+                android:layout_toRightOf="@id/activity_chat__btnBack"
                 android:layout_centerVertical="true"
                 app:cardCornerRadius="35dp">
 
@@ -45,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/chitchat_logo"
-                    android:id="@+id/specificuserimageinimageview"
+                    android:id="@+id/activity_chat__profilePicture"
                     android:scaleType="centerCrop">
 
                 </ImageView>
@@ -81,14 +80,16 @@
         android:id="@+id/activity_chat__messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/getmessage"
+        android:layout_above="@id/activity_chat__currentMessage"
         android:layout_below="@id/toolbarofspecificchat"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="-70dp"
         android:padding="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
-        android:id="@+id/getmessage"
+        android:id="@+id/activity_chat__currentMessage"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -109,7 +110,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:id="@+id/carviewofsendmessage"
-        android:layout_toRightOf="@id/getmessage"
+        android:layout_toRightOf="@id/activity_chat__currentMessage"
         android:layout_marginLeft="-50dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="#0D8F80"
@@ -117,7 +118,7 @@
         app:cardCornerRadius="45dp">
 
         <ImageButton
-            android:id="@+id/imageviewsendmessage"
+            android:id="@+id/activity_chat__btnSendMessage"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"

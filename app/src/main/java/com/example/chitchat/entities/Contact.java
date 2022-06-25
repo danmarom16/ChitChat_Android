@@ -10,18 +10,18 @@ public class Contact {
     private String id;
     private String name;
     private String server;
-    private String lastMessage;
-    private String lastMessageDate;
+    private String last;
+    private String lastdate;
     private int pic = 0;
 
 
     public Contact(String id, String name, String server,
-                   String lastMessage, String lastMessageDate) {
+                   String last, String lastdate) {
         this.id = id;
         this.name = name;
         this.server = server;
-        this.lastMessage = lastMessage;
-        this.lastMessageDate = lastMessageDate;
+        this.last = last;
+        this.lastdate = lastdate;
     }
 
     public String getId() {
@@ -36,12 +36,16 @@ public class Contact {
         return server;
     }
 
-    public String getLastMessage() {
-        return lastMessage;
+    public String getLast() {
+        return last;
     }
 
-    public String getLastMessageDate() {
-        return lastMessageDate;
+    public String getLastdate() {
+        return lastdate;
+    }
+
+    public int getPic() {
+        return pic;
     }
 
     public void setId(String id) {
@@ -56,19 +60,34 @@ public class Contact {
         this.server = server;
     }
 
-    public void setLastMessage(String lastMessage) {
-        this.lastMessage = lastMessage;
+    public void setLastMessage(String last) {
+        this.last = last;
     }
 
     public void setLastMessageDate(String lastMessageDate) {
-        this.lastMessageDate = lastMessageDate;
-    }
-
-    public int getPic() {
-        return pic;
+        this.lastdate = lastMessageDate;
     }
 
     public void setPic(int pic) {
         this.pic = pic;
     }
+
+    public void fMessage() {
+        if (this.last != null) {
+            if (this.last.length() > 10) {
+                this.last = this.last.substring(0, 10);
+                this.last = this.last + "...";
+            }
+        }
+    }
+
+    public void fTime() { // must be of type: "yyyy-MM-ddTHH:mm:ss.fffffff"
+        if (this.lastdate != null) {
+            if (this.lastdate.length() > 16) {
+                this.lastdate = this.lastdate.substring(11, 16);
+            }
+        }
+    }
+
+
 }
