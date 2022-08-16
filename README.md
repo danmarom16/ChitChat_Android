@@ -27,7 +27,7 @@ The installation process consists of 3 parts:
 4) Choose set-up project and make sure "Single startup project" is chosen, and the choose "ChitChatWebApi" to be the project that appear in the box below.
 
 5) Finally click start, and you should see this window appear:
-![image](https://user-images.githubusercontent.com/92876036/184936367-8faa082e-7bd5-4364-ac2b-3e5addc7aa69.png)
+<img width="947" alt="image" src="https://user-images.githubusercontent.com/92876036/184936699-f1b6ce8b-a283-48de-a1e4-a79649711d93.png">
 
 #### That's it for the server side, please do not close those windows until you finish using the app, you can minimize them.
 
