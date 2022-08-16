@@ -31,7 +31,23 @@ The installation process consists of 3 parts:
 
 #### That's it for the server side, please do not close those windows until you finish using the app, you can minimize them.
 
-#### Server side Set-up:
+#### Android client side Set-up:
+### Intro
+ChitChat consist 3 Pages:
+1) Login page - this is the page when you see when you 1st log in to the app. To log in, user must be already registered.
+2) Register page - in this page the user can register himself and add create a new account.
+3) Chats page - the page of the chats of the user.
+4) Setting page.
+
+### Getting Started
+1) Download android studio -> Guide: https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio#0
+2) Create a new project from a version control with the following source: https://github.com/danmarom16/ChitChat_Android.git
+-- it takes alot of time for android studio to set up the project so wait for it to complete it and the procees to the next stage.
+-- you can proceed when the project looks like this:
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/92876036/184938036-929b9335-6e7b-4074-9419-da80f82c75b4.png">
+3)
+
+
 
 Have fun.
 ## Authors
