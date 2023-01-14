@@ -49,7 +49,7 @@ ChitChat consist 3 Pages:
 Have fun.
 
 
-### Here are some slides from the app!
+### Some slides from the app:
 <img width="947" alt="image" src="https://user-images.githubusercontent.com/92261832/212500454-a1db2f2e-9cfb-4696-bbd0-4420390a912d.png">
 
 ## Authors
